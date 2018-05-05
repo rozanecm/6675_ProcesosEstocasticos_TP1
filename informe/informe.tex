@@ -115,11 +115,11 @@ Como $X_n = G_i X_{i-1} h + G_i W_{i-1}$, entonces:
 
 Por enunciado vale que $\varepsilon_i = \varepsilon_{i-1}$, por lo tanto
 \begin{equation}
-    \varepsilon_n = (G_i h)^2 \varepsilon_i + G_i^2 \sigma ^2 \Leftrightarrow \frac{\varepsilon_n}{h^2 \varepsilon_i + \sigma ^2}=G_i^2
+    \varepsilon_n = (G_i h)^2 \varepsilon_i + G_i^2 \sigma ^2 \Leftrightarrow \frac{\varepsilon_n}{h^2 \varepsilon_i + \sigma ^2}=G_i^2 \Leftrightarrow G_i=\sqrt{\frac{\varepsilon_n}{h^2 \varepsilon_i + \sigma ^2}}
 \end{equation}
 Por lo tanto, se tiene que 
 \begin{equation}
-    G_i=\sqrt{\frac{\varepsilon_n}{h^2 \varepsilon_i + \sigma ^2}}
+    G_i=\frac{1}{h}\sqrt{\frac{SNR}{SNR+1}}
 \end{equation}
 
 \newpage
