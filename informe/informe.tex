@@ -124,6 +124,24 @@ Por lo tanto, se tiene que
 
 \newpage
 \section{Ejercicio 2: Probabilidad de error del sistema analógico}
+\subsection{Cálculo de $Y_n$}
+Por definición tenemos que $Y_i=X_i h + W_i$ y que $X_1$ es la señal original. Se escribirán primero las expresiones de los primeros términos de Y, para que sirvan de ayuda en la deducción de la fórmula general de $Y_n$.
+$$Y_1=X_1 h + W_1 \rightarrow X_2=G_2(X_1 h+W_1)=G_2 h X_1 + G_2 W_1$$
+$$Y_2=X_2 h + W_2 = (G_2 h X_1 + G_2 W_1)h + W_2 = G_2 h^2 X_1 + G_2 W_1 h + W_2$$
+$$\rightarrow X_3 = G_3 Y_2=G_3(G_2 h^2 X_1 + G_2 W_1 h + W_2)=G_3 G_2 h^2 X_1 + G_3 G_2 W_1 h + G_3 W_2$$
+$$Y_3=X_3 h + W_3 = G_3 G_2 h^3 X_1 + G_3 G_2 W_1 h^2 + G_3 h W_2 + W_3$$
+Se puede ver que la fórmula general toma la siguiente forma:
+$$Y_n=X_1 h^n \prod_{i=2}^{n}G_i+\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j$$
+Como se puede observar, el primer término contiene la variable $X_1$, y el resto de los términos se relacionan con los ruidos que se van agregando en cada etapa.
+\subsection{SNR}
+$$SNR=\frac{Var(senal\ de\ interes)}{ruido}=\frac{Var(X_1 h^n \prod_{i=2}^{n}G_i)}{Var(\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)}$$
+$$=\frac{E((X_1 h^n \prod_{i=2}^{n}G_i))^2)+E(X_1 h^n \prod_{i=2}^{n}G_i)^2}{E((\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)^2)+E(\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)^2}$$
+Como $E(X_1 h^n \prod_{i=2}^{n}G_i)=cte E(X_1)=cte*0=0$ y $E(\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)=0$, entonces:
+$$SNR=\frac{E((X_1 h^n \prod_{i=2}^{n}G_i))^2)}{E((\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)^2)}$$
+Se llama $\widetilde{W}=\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j$. Se muestra a continuación el cálculo de su varianza.
+$$Var(\widetilde{W})=Var(\sum_{i=1}^{n}h^{n-i} W_i \prod_{j=i+1}^{n}G_j)=\sum_{i=1}^{n} h^{{(n-i)}^2} \sigma ^2 (\prod_{j=i+1}^{n}G_j)^2 = \sum_{i=1}^{n}((h G)^{n-i})^2\sigma ^2$$
+Volviendo al cálculo de la SNR:
+$$SNR=\frac{E(X_1)h^{2n} \prod_{i=2}^{n}G_i^2}{\sum_{i=1}^{n}((h G)^{n-i})^2\sigma ^2}$$
 
 \newpage
 \section{Ejercicio 3: Probabilidad de error del sistema digital}
